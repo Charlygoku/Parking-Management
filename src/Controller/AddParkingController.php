@@ -23,32 +23,24 @@ final class AddParkingController extends AbstractController
         $coche = new Coche();
         $formCoche = $this->createForm(AddCocheTypeForm::class, $coche);
         $formCoche->handleRequest($request);
-
+    
         if ($formCoche->isSubmitted() && $formCoche->isValid()) {
-            $coches = $entityManager->getRepository(Coche::class)->findAll();
-
-            foreach ($coches as $c) {
-                if ($c->getMatricula() === $coche->getMatricula()) {
-                    if ($c->getEstado() !== $coche->getEstado()) {
-                        $c->setEstado($coche->getEstado());
-                    }
-
-                    if ($c->getTipo() !== $coche->getTipo()) {
-                        $c->setTipo($coche->getTipo());
-                    }
-
-                    $this->addFlash('existe', 'Se han modificado los datos del coche.');
-                    return $this->redirectToRoute('app_add_parking');
-                }
+            // Buscar si ya existe un coche con esa matrícula
+            $cocheExistente = $entityManager->getRepository(Coche::class)->findOneBy([
+                'matricula' => $coche->getMatricula(),
+            ]);
+        
+            if ($cocheExistente) {
+                $this->addFlash('error', 'Ya existe un coche con esa matrícula.');
+            } else {
+                $entityManager->persist($coche);
+                $entityManager->flush();
+                $this->addFlash('success', 'Coche añadido correctamente.');
             }
-
-            $entityManager->persist($coche);
-            $entityManager->flush();
-
-            $this->addFlash('success', 'Coche añadido correctamente.');
+        
             return $this->redirectToRoute('app_add_parking');
         }
-
+    
         return $this->render('add_parking/index.html.twig', [
             'formulario_coche' => $formCoche->createView()
         ]);

@@ -7,10 +7,6 @@ doctrine:
                 driver: 'pdo_sqlite'
                 profiling_collect_backtrace: '%kernel.debug%'
                 use_savepoints: true
-            data_prod:
-                url: 'sqlite:///%kernel.project_dir%/var/data_prod.db'
-                driver: 'pdo_sqlite'
-
     orm:
         auto_generate_proxy_classes: true
         enable_lazy_ghost_objects: true
