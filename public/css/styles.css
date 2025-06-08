@@ -171,6 +171,10 @@ body, html {
                     }
                 }
             }
+            #add-car {
+                background-color: #141414;
+                height: 60px;
+            }
             & > button {
                 width: 80%;
                 height: 50px;
