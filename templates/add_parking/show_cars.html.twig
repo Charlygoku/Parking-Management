@@ -66,6 +66,10 @@
                             <td>
                                 {# Botón "Editar" que enlaza al formulario de edición #}
                                 <a href="{{ path('app_edit_car', {'matricula': dato.coche.matricula}) }}" class="btn btn-sm btn-warning">Editar</a>
+
+                                <form action="{{ path('app_delete_car', {'matricula': dato.coche.matricula}) }}" method="POST" style="display:inline;" onsubmit="return confirm('¿Estás seguro de que deseas eliminar este coche?');">
+                                    <button type="submit" class="btn btn-sm btn-danger">🗑️ Eliminar</button>
+                                </form>
                             </td>
                         </tr>
                     {% endfor %}

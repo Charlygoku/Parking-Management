@@ -10,6 +10,7 @@ use App\Entity\Visita;
 
 use App\Form\AddCocheTypeForm;
 use Doctrine\ORM\EntityManagerInterface;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request; // ¡IMPORTADO! Para poder leer la solicitud
 use Symfony\Component\HttpFoundation\Response;
@@ -105,5 +106,21 @@ final class AddParkingController extends AbstractController
             'formulario_editar_coche' => $form->createView(),
             'matricula' => $matricula,
         ]);
+    }
+
+    #[Route('/cars/delete/{matricula}', name: 'app_delete_car', methods: ['POST'])]
+    public function deleteCar(string $matricula, EntityManagerInterface $em, Request $request): RedirectResponse
+    {
+        $coche = $em->getRepository(Coche::class)->find($matricula);
+
+        if (!$coche) {
+            $this->addFlash('danger', 'Coche no encontrado.');
+        } else {
+            $em->remove($coche);
+            $em->flush();
+            $this->addFlash('success', 'Coche eliminado correctamente.');
+        }
+
+        return $this->redirectToRoute('app_show_cars');
     }
 }
