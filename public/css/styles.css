@@ -36,19 +36,19 @@ body, html {
             white-space: nowrap; 
             & > .parking-images {
                 position: relative;
-                width: 1800px;
-                height: 1250.580px;
+                width: 1700px;
+                height: 1180.21px;
 
                 & > .image-base {
-                    width: 1800px;
-                    height: 1250.580px;
+                    width: 1700px;
+                    height: 1180.21px;
                 }
                 & > .image-overlay{
                     position: absolute;
                     top: 0px;
                     left: 0px;
-                    width: 1800px;
-                    height: 1250.580px;
+                    width: 1700px;
+                    height: 1180.21px;
                     opacity: 1;
                     z-index: 2;
                 }
@@ -173,7 +173,11 @@ body, html {
             }
             #add-car {
                 background-color: #141414;
-                height: 60px;
+                height: 100px;
+
+                &:hover {
+                        background-color: #555;
+                }
             }
             & > button {
                 width: 80%;
@@ -193,9 +197,9 @@ body, html {
             .div-data-leyenda {
                 width: 100%;
                 overflow-y: auto;
-                max-height: 65%;
+                max-height: 55%;
                 height: auto;
-                margin-top: 80px;
+                margin-top: 150px;
             }
         }
         & > #form-crear , & > #form-modificar , & > #form-eliminar {

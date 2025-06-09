@@ -156,12 +156,12 @@
     {% if setting and setting.login %}
         <form method="post" action="{{ path('app_toggle_login') }}">
             <input type="hidden" name="estado" value="0">
-            <button class="btn btn-danger">Desactivar el login</button>
+            <button class="btn btn-danger">Desactivar el registro</button>
         </form>
     {% else %}
         <form method="post" action="{{ path('app_toggle_login') }}">
             <input type="hidden" name="estado" value="1">
-            <button class="btn btn-success">Activar el login</button>
+            <button class="btn btn-success">Activar el registro</button>
         </form>
     {% endif %}
 </div>
