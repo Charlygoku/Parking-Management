@@ -195,7 +195,7 @@ body, html {
             .div-data-leyenda {
                 width: 100%;
                 overflow-y: auto;
-                max-height: 55%;
+                max-height: 50%;
                 height: auto;
                 margin-top: 15px;
             }
