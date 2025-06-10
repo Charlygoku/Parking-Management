@@ -152,13 +152,10 @@ body, html {
             justify-content: center; 
             position: relative;
             & > a {
-                position: absolute;
-                top: 1%;
-                left: 0%;
                 margin: 10px 10%;
                 width: 80%;
                 & > button {
-                    width: 100%;
+                    width: 80%;
                     height: 50px;
                     background-color: #333;
                     color: white;
@@ -173,7 +170,8 @@ body, html {
             }
             #add-car {
                 background-color: #141414;
-                height: 100px;
+                height: 80px;
+                margin-top: 10px;
 
                 &:hover {
                         background-color: #555;
@@ -199,7 +197,7 @@ body, html {
                 overflow-y: auto;
                 max-height: 55%;
                 height: auto;
-                margin-top: 150px;
+                margin-top: 15px;
             }
         }
         & > #form-crear , & > #form-modificar , & > #form-eliminar {

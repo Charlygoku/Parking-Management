@@ -160,7 +160,7 @@
                         </select><br>
                         <label for="entrada">Entrada:</label>
                         <input type="text" id="entrada" name="entrada" readonly><br>
-                        <button type="submit">Editar</button>
+                        <button type="submit">Aceptar</button>
                         <button type="button" id="delete-button">Salir</button>
                     </form>
                 </div>
@@ -171,6 +171,9 @@
             <a href="{{ path('app_add_parking') }}">
                 <button id="add-car" class="add-car-button">🚘 Gestionar coche</button>
             </a>
+            <button onclick="mostrarFormulario('crear')">➕ Añadir Tipo</button>
+            <button onclick="mostrarFormulario('modificar')">✏️ Modificar Tipo</button>
+            <button onclick="mostrarFormulario('eliminar')">🗑️ Eliminar Tipo</button>
             <!-- Leyenda -->
             <div class="div-data-leyenda">
                 {% for tipos in types %}
@@ -180,9 +183,6 @@
                     </div>
                 {% endfor %}
             </div>
-            <button onclick="mostrarFormulario('crear')">➕ Añadir Tipo</button>
-            <button onclick="mostrarFormulario('modificar')">✏️ Modificar Tipo</button>
-            <button onclick="mostrarFormulario('eliminar')">🗑️ Eliminar Tipo</button>
         </div>
         <!-- Formulario crear tipo -->
         <form method="POST" action="/ShowParking/add-tipo" id="form-crear" style="display:none;">
